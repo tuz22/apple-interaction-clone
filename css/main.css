@@ -1,0 +1,152 @@
+@charset 'utf-8';
+
+html {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+}
+body {
+  overflow-x: hidden; /* 가로 스크롤 안생기게 */
+  color: rgb(29, 29, 31);
+  letter-spacing: -0.05em; /* 자간 */
+  background: white;
+}
+p {
+  line-height: 1.6; /* 행간 */
+}
+a {
+  color: rgb(29, 29, 31);
+  text-decoration: none;
+}
+
+.global-nav {
+  height: 44px;
+  padding: 0 1rem;
+}
+.local-nav {
+  height: 52px;
+  padding: 0 1rem;
+  border-bottom: 1px solid #ddd;
+}
+.global-nav-links,
+.local-nav-links {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+}
+.global-nav-links {
+  justify-content: space-between;
+}
+.local-nav-links .product-name {
+  margin-right: auto;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.local-nav-links a {
+  font-size: 0.8rem;
+}
+.local-nav-links a:not(.product-name) {
+  margin-left: 2em;
+}
+.scroll-section {
+  padding-top: 50vh; /* 보이는 화면의 절반 만큼 padding-top */
+}
+.scroll-section-0 h1 {
+  font-size: 4rem; /* 4배 */
+}
+.main-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3em;
+  font-size: 2.5rem;
+  background: rgba(0, 0, 0, 0.3);
+}
+.main-message p {
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+}
+.main-message samll {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 1.2rem;
+}
+#scroll-section-2 .main-message {
+  font-size: 3.5rem;
+}
+.description {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+  color: #888;
+}
+.description strong {
+  float: left;
+  margin-right: 0.2em;
+  font-size: 3rem;
+  color: rgb(29, 29, 31);
+}
+.desc-message {
+  width: 50%;
+  font-weight: bold;
+}
+.pin {
+  width: 1px;
+  background: rgb(29, 29, 31);
+  height: 100px;
+}
+.mid-message {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 2rem;
+  color: #888; 
+}
+.mid-message strong {
+  color: rgb(29, 29, 31);
+}
+.canvas-caption {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1 rem;
+  font-size: 1.2rem;
+  color: #888;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  color: white;
+  background: darkorange;
+}
+
+@media (min-width: 1024px) {
+  #scroll-section-0 h1 {
+    font-size: 9vw;
+  }
+  .main-message {
+    font-size: 4vw;
+  }
+  .description {
+    font-size: 2rem;
+  }
+  .description strong {
+    font-size: 6rem;
+  };
+  #scroll-section-2 .main-message {
+    font-size: 6vw;
+  }
+  .main-message small {
+    font-size: 1.5vw;
+  }
+  .desc-message {
+    width: 20%;
+  }
+  .mid-message {
+    font-size: 2rem;
+  }
+}
