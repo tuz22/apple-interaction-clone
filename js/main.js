@@ -94,9 +94,13 @@
   function setLayout() {
     // 각 스크롤 섹션의 높이 세팅
     for (let i = 0; i < sceneInfo.length; i++) {
-      console.log(window.innerHeight);
-      sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
-      sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px` // ${내부에는 변수 사용 가능}
+      if (sceneInfo[i].type === 'sticky') {
+        sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
+        sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px` // ${내부에는 변수 사용 가능}
+      } else if (sceneInfo[i].type === 'normal') {
+        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
+      }
+      sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
     }
     // console.log(sceneInfo);
 
