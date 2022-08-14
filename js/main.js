@@ -131,6 +131,10 @@
       }
     }
     document.body.setAttribute('id',`show-scene-${currentScene}`);
+
+    // 창높이에 맞춰서 캔버스 크기 조절
+    const heightRatio = window.innerHeight / 1080;
+    sceneInfo[0].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   }
   
   // opacity의 시작값 끝값, 현재 구간 내에서 얼마나 스크롤 됐는지
