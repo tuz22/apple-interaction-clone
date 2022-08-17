@@ -296,15 +296,18 @@
 
   }
   
-  window.addEventListener('resize', setLayout);
+  // window.addEventListener('resize', setLayout);
   window.addEventListener('scroll', () => {
     yOffset = window.pageYOffset;
     scrollLoop();
   });
 
   // window.addEventListener('DOMContentLoaded', setLayout);
-  window.addEventListener('load', setLayout);
+  window.addEventListener('load', () => {
+    setLayout();
+    sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.viedoImages[0], 0, 0);
+  });
+
   window.addEventListener('resize', setLayout);
-  setLayout();
 
 })();

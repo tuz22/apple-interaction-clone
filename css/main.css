@@ -63,7 +63,10 @@ a {
   border: 3px solid red;
   padding-top: 50vh; /* 보이는 화면의 절반 만큼 padding-top */
 }
-.scroll-section-0 h1 {
+#scroll-section-0 h1 {
+  position: relative;
+  top: -10vh;
+  z-index: 5;
   font-size: 4rem; /* 4배 */
   text-align: center;
 }
