@@ -99,7 +99,18 @@
       heightNum: 5,
       scrollHeight: 0, 
       objs: {
-        container: document.querySelector('#scroll-section-3')
+        container: document.querySelector('#scroll-section-3'),
+        canvasCaption: document.querySelector('.canvas-caption'),
+        canvas: document.querySelector('.image-blend-canvas'),
+        context: document.querySelector('.image-blend-canvas').getContext('2d'),
+        imagesPath: [
+          './images/blend-image-1.jpg',
+          './images/blend-image-2.jpg'
+        ],
+        images: []
+      },
+      values: {
+
       }
     },
   ];
@@ -119,6 +130,13 @@
       imgElem2 = new Image();
       imgElem2.src = `./video/002/IMG_${7027 + i}.JPG`;
       sceneInfo[2].objs.videoImages.push(imgElem2);
+    }
+
+    let imgElem3;
+    for (let i = 0; i <sceneInfo[3].objs.imagesPath.length; i++) {
+      imgElem3 = new Image();
+      imgElem3.src = sceneInfo[3].objs.imagesPath[i];
+      sceneInfo[3].objs.images.push(imgElem3);
     }
   }
   setCanvasImages();
@@ -290,6 +308,24 @@
 
       case 3:
         // console.log('3 play');
+        // 가로세로 화면이 꽉 차게 세팅
+        const widthRatio = window.innerHeight / objs.canvas.width;
+        const heightRatio = window.innerHeight / objs.canvas.height;
+        let canvasScaleRatio;
+
+        if (widthRatio <= heightRatio) {
+          // 캔버스보다 브라우저 창이 길 때
+          canvasScaleRatio = heightRatio;
+          console.log('heightRatio로 결정');
+        } else {
+          // 캔버스보다 브라우저 창이 납작 할 때
+          canvasScaleRatio = widthRatio;
+          console.log('widthRatio로 결정');
+        }
+
+        objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
+        objs.context.drawImage(objs.images[0], 0, 0);
+
         break;
     }
   }

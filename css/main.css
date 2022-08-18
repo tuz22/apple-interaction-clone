@@ -163,12 +163,20 @@ a {
 .sticky-elem-canvas {
   top: 0;
   height: 100%;
-  background-color: #ccc;
+  /* background-color: #ccc; */
 }
 .sticky-elem-canvas canvas {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+.image-blend-canvas {
+    background: blue;
+}
+#scroll-section-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {
