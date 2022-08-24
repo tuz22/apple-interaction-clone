@@ -112,6 +112,7 @@
       values: {
         rect1X: [ 0, 0, { start: 0, end: 0 }],
         rect2X: [ 0, 0, { start: 0, end: 0 }],
+        blendHeight: [0, 0, { start: 0, end: 0}],
         rectStartY: 0
       }
     },
@@ -401,7 +402,7 @@
         values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
         values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
         
-        // 좌우 흰색 박스 그리기 ( fillRect(x, y, width, height) )
+        /* 좌우 흰색 박스 그리기 ( fillRect(x, y, width, height) ) */
         // objs.context.fillRect(values.rect1X[0], 0, parseInt(whiteRectWidth), recalculatedInnerHeight);
         // objs.context.fillRect(values.rect2X[0], 0, parseInt(whiteRectWidth), recalculatedInnerHeight);
         objs.context.fillRect(
@@ -425,7 +426,23 @@
         } else {
           step = 2;
           // console.log('캔버스 닿은 후');
-          // 이미지 블랜드
+          // 이미지 블렌드
+          // imageBlendY: [0, 0, { start: 0, end: 0}]
+
+          /* 이미지 블렌드 애니메이션 값 */
+          values.blendHeight[0] = 0;
+          values.blendHeight[1] = objs.canvas.height;
+          values.blendHeight[2].start = values.rect1X[2].end; //두번째 이미지 시작지점 = 첫번째 이미지 끝지점
+          values.blendHeight[2].end = values.blendHeight[2].start + 0.2;
+
+          const blendHeight = calcValues(values.blendHeight, currentYOffset);
+
+          // drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+          objs.context.drawImage(objs.images[1], 
+            0, objs.canvas.height - blendHeight, objs.canvas.width, blendHeight,
+            0, objs.canvas.height - blendHeight, objs.canvas.width, blendHeight
+          );
+
           objs.canvas.classList.add('sticky');  
           objs.canvas.style.top = `${-(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`;
         }
