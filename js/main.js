@@ -306,6 +306,56 @@
           objs.pinC.style.transform = `scaleY(${calcValues(values.pinC_scaleY, currentYOffset)})`;
       }
 
+      // 2번 씬이 끝날무렵에 미리 캔버스 그려주기(3번 씬 시작할때 갑자기 캔버스가 생기면 어색)
+      if (scrollRatio > 0.9) {
+        const objs = sceneInfo[3].objs;
+        const values = sceneInfo[3].values;
+        const widthRatio = window.innerHeight / objs.canvas.width;
+        const heightRatio = window.innerHeight / objs.canvas.height;
+        let canvasScaleRatio;
+
+        if (widthRatio <= heightRatio) {
+          // 캔버스보다 브라우저 창이 길 때
+          canvasScaleRatio = heightRatio;
+          console.log('heightRatio로 결정');
+        } else {
+          // 캔버스보다 브라우저 창이 납작 할 때
+          canvasScaleRatio = widthRatio;
+          console.log('widthRatio로 결정');
+        }
+
+        objs.canvas.style.transform = `scale(${canvasScaleRatio})`;
+        objs.context.fillStyle = 'white';
+        objs.context.drawImage(objs.images[0], 0, 0);
+
+        // 캔버스 사이즈에 맞춰 가정한 innerHeight, innerWidth
+        // const recalculatedInnerWidth = window.innerWidth / canvasScaleRatio;
+        const recalculatedInnerWidth = document.body.offsetWidth / canvasScaleRatio;
+        const recalculatedInnerHeight = window.innerHeight / canvasScaleRatio;
+        
+        const whiteRectWidth = recalculatedInnerWidth * 0.15;
+        // 출발 값
+        values.rect1X[0] = (objs.canvas.width - recalculatedInnerWidth) / 2;
+        values.rect2X[0] = values.rect1X[0] + recalculatedInnerWidth - whiteRectWidth;
+        // 도착 값
+        values.rect1X[1] = values.rect1X[0] - whiteRectWidth;
+        values.rect2X[1] = values.rect2X[0] + whiteRectWidth;
+        
+        // 좌우 흰색 박스 그리기
+        objs.context.fillRect(
+          parseInt(values.rect1X[0]), 
+          0, 
+          parseInt(whiteRectWidth), 
+          objs.canvas.height
+        );
+        objs.context.fillRect(
+          parseInt(values.rect2X[0]), 
+          0, 
+          parseInt(whiteRectWidth), 
+          objs.canvas.height
+        );
+      }
+
         break;
 
       case 3:
