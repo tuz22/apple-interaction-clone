@@ -31,14 +31,14 @@ a {
   position: absolute;
   top: 45px; /* global-nav와 겹치지 않게 */
   left: 0;
-  z-index: 10;
+  z-index: 11;
   width: 100%;
   height: 52px;
   padding: 0 1rem;
   border-bottom: 1px solid #ddd;
 }
 .global-nav-links,
-.local-nav-linkss {
+.local-nav-links {
   display: flex;
   align-items: center;
   max-width: 1000px;
@@ -61,7 +61,7 @@ a {
 }
 .scroll-section {
   position: relative;
-  border: 3px solid red;
+  /* border: 3px solid red; */
   padding-top: 50vh; /* 보이는 화면의 절반 만큼 padding-top */
 }
 #scroll-section-0 h1 {
@@ -76,6 +76,7 @@ a {
   align-items: center;
   justify-content: center;
   top: 35vh;
+  margin: 5px 0;
   height: 3em;
   font-size: 2.5rem;
   opacity: 0;
@@ -85,7 +86,7 @@ a {
   text-align: center;
   line-height: 1.2;
 }
-.main-message samll {
+.main-message small {
   display: block;
   margin-bottom: 0.5em;
   font-size: 1.2rem;
@@ -106,7 +107,7 @@ a {
   font-size: 3rem;
   color: rgb(29, 29, 31);
 }
-.sticky-elem .desc-message {
+.sticky-elem.desc-message {
   width: 50%;
   font-weight: bold;
   opacity: 0;
@@ -171,13 +172,14 @@ a {
   top: 50%;
   left: 50%;
 }
-.image-blend-canvas {
-    background: blue;
-}
 #scroll-section-3 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.image-blend-canvas.sticky {
+  position: fixed;
+  top: 0;
 }
 @media (min-width: 1024px) {
   #scroll-section-0 h1 {

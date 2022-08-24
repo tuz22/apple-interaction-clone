@@ -148,9 +148,8 @@
     for (let i = 0; i < sceneInfo.length; i++) {
       if (sceneInfo[i].type === 'sticky') {
         sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
-        sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px` // ${내부에는 변수 사용 가능}
       } else if (sceneInfo[i].type === 'normal') {
-        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
+        sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight + window.innerHeight * 0.5;
       }
       sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
     }
@@ -417,6 +416,19 @@
           parseInt(whiteRectWidth), 
           objs.canvas.height
         );
+
+        // 캔버스가 브라우저 상단에 닿지 않았다면
+        if (scrollRatio < values.rect1X[2].end) {
+          step = 1;
+          // console.log('캔버스 닿기 전');
+          objs.canvas.classList.remove('sticky');
+        } else {
+          step = 2;
+          // console.log('캔버스 닿은 후');
+          // 이미지 블랜드
+          objs.canvas.classList.add('sticky');  
+          objs.canvas.style.top = `${-(objs.canvas.height - objs.canvas.height * canvasScaleRatio) / 2}px`;
+        }
 
         break;
     }
