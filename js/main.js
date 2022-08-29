@@ -147,6 +147,15 @@
   }
   setCanvasImages();
 
+  function checkMenu() {
+    if (yOffset > 44) { // 44 == 첫번째 메뉴(nav) 높이
+      document.body.classList.add('local-nav-sticky');
+    } else {
+      document.body.classList.remove('local-nav-sticky');
+    }
+  }
+
+
   function setLayout() {
     // 각 스크롤 섹션의 높이 세팅
     for (let i = 0; i < sceneInfo.length; i++) {
@@ -470,7 +479,7 @@
             values.canvasCaption_opacity[2].end = values.canvasCaption_opacity[2]. start + 0.1;
             values.canvasCaption_translateY[2].start = values.canvasCaption_opacity[2].start
             values.canvasCaption_translateY[2].end = values.canvasCaption_opacity[2].end;
-            
+
             objs.canvasCaption.style.opacity = calcValues(values.canvasCaption_opacity, currentYOffset);
             objs.canvasCaption.style.transform = `translate3d(0, ${calcValues(values.canvasCaption_translateY, currentYOffset)}%, 0)`;
           }
@@ -514,6 +523,7 @@
   window.addEventListener('scroll', () => {
     yOffset = window.pageYOffset;
     scrollLoop();
+    checkMenu();
   });
 
   // window.addEventListener('DOMContentLoaded', setLayout);
