@@ -149,7 +149,6 @@
       sceneInfo[3].objs.images.push(imgElem3);
     }
   }
-  setCanvasImages();
 
   function checkMenu() {
     if (yOffset > 44) { // 44 == 첫번째 메뉴(nav) 높이
@@ -496,7 +495,7 @@
   function scrollLoop() {
     enterNewScene = false;
     prevScrollHeight = 0;
-    
+
     for (let i = 0; i < currentScene; i++) {
       prevScrollHeight += sceneInfo[i].scrollHeight;
     }
@@ -564,6 +563,17 @@
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   });
 
-  window.addEventListener('resize', setLayout);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 600) {
+      setLayout();
+    }
+    // 창 크기 변경시 초기화
+    sceneInfo[3].values.rectStartY = 0;
+  });
+
+  // 모바일 가로세로 전환
+  window.addEventListener('orientationchange', setLayout);
+
+  setCanvasImages();
 
 })();
