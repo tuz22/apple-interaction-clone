@@ -17,7 +17,9 @@ a {
   color: rgb(29, 29, 31);
   text-decoration: none;
 }
-
+body.before-load {
+  overflow: hidden;
+}
 .global-nav {
   position: absolute; /* fixed일땐 스크롤 구간 확인시 nav 영역을 포함해서 계산 -> absolute*/
   top: 0;
