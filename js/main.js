@@ -559,6 +559,8 @@
 
   // window.addEventListener('DOMContentLoaded', setLayout);
   window.addEventListener('load', () => {
+    document.body.classList.remove('before-load');
+    // document.body.removeChild(document.querySelector('.loading'));
     setLayout();
     sceneInfo[0].objs.context.drawImage(sceneInfo[0].objs.videoImages[0], 0, 0);
   });
@@ -573,7 +575,9 @@
 
   // 모바일 가로세로 전환
   window.addEventListener('orientationchange', setLayout);
-
+  document.querySelector('.loading').addEventListener('transitionend', (e) => {
+    document.body.removeChild(e.currentTarget); // currentTarget은 .loading
+  });
   setCanvasImages();
 
 })();
