@@ -565,15 +565,18 @@
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 600) {
+      if (window.innerWidth > 900) {
         setLayout();
+        // 창 크기 변경시 초기화
+        sceneInfo[3].values.rectStartY = 0;
       }
-      // 창 크기 변경시 초기화
-      sceneInfo[3].values.rectStartY = 0;
     });
 
     // 모바일 가로세로 전환
-    window.addEventListener('orientationchange', setLayout);
+    // window.addEventListener('orientationchange', setLayout);
+    window.addEventListener('orientationchange', () => {
+      setTimeout(setLayout, 500);
+    });
   
     document.querySelector('.loading').addEventListener('transitionend', (e) => {
       document.body.removeChild(e.currentTarget); // currentTarget은 .loading
