@@ -210,6 +210,10 @@ body.before-load {
   opacity: 0;
   transition: 0.5s;
 }
+.before-load .container {
+  /* 각 섹션별 높이 동시에 세팅하도록 */
+  display: none;
+}
 .before-load .loading {
   opacity: 1;
 }
