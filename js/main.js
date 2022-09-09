@@ -500,12 +500,21 @@
       prevScrollHeight += sceneInfo[i].scrollHeight;
     }
 
-    // console.log(prevScrollHeight);
-
     if (delayedYOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
       enterNewScene = true; // 새 구간으로 바뀔 때 위치가 마이너스로 뜨는 것을 방지
-      currentScene++;
+      
+      // 하단 컨텐츠 추가시 block해제
+      if (currentScene < sceneInfo.length - 1){ // currentScene < 3 
+        currentScene++;
+      }
+      if (currentScene === sceneInfo.length - 1){
+        document.body.classList.add('scroll-effect-end');
+      }
       document.body.setAttribute('id',`show-scene-${currentScene}`);
+    }
+
+    if (delayedYOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
+      document.body.classList.remove('scroll-effect-end');
     }
 
     if (delayedYOffset < prevScrollHeight) {
