@@ -21,3 +21,10 @@
 - 비디오 제어 - 22.08.18
 - 캔버스를 사용해 크로스브라우징 - 22.08.28
 - SVG 로딩 애니메이션 구현 - 22.09.02
+
+## 📝 프로젝트 기록
+- https://seungstory.tistory.com/300
+- https://seungstory.tistory.com/304
+- https://seungstory.tistory.com/307
+- https://seungstory.tistory.com/308
+- https://seungstory.tistory.com/309
