@@ -1,4 +1,4 @@
-# apple-interaction-clone
+# AirMug Pro
 
 > 애플 에어팟 소개 페이지를 클론한 머그컵 사이트<br>
 > 22.08.07 ~22.09.03<br>
